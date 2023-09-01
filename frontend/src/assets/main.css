@@ -1,35 +1,224 @@
 @import './base.css';
 
+:root {
+  --primary: #2c2c2c;
+  --primary-hover-link: #37ff05;
+  --primary-hover-button: #545454;
+  --foreground: #ffffff;
+  --foreground-alt: #ffffff;
+  --background: #3f3f3f;
+  --background-alt: #292929;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-a,
-.green {
+main {
+  color: var(--foreground);
+  text-align: center;
+}
+
+.title {
+  color: var(--foreground-alt);
+  font-size: 45px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.navbar {
+  background-color: var(--primary);
+  color: var(--foreground-alt);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  display: none; /* Hide on normal screens */
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: var(--foreground-alt);
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size:15px;
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+  transition: color 0.3s;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+.navbar a:hover {
+  color: var(--foreground-alt);
+  background-color: var(--primary-hover-button);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content-wrapper {
+  position: relative; /* Set the position to something other than static */
+  z-index: 1; /* Ensure the content is stacked above the background */
+}
+
+.content-padding {
+  height: 34px; /* Adjust this to match the navbar's height */
+}
+
+.content-spacer-smaller {
+  height: 25px;
+}
+
+.content-spacer-small {
+  height: 50px;
+}
+
+.content-spacer-normal {
+  height: 100px;
+}
+
+.content-spacer-large {
+  height: 200px;
+}
+
+.content-spacer-larger {
+  height: 300px;
+}
+
+.content-block-full {
+  padding: 20px;
+  background-color: var(--background);
+  font-size:17px;
+}
+
+.footer {
+  position: relative;
+  background-color: var(--primary);;
+  color: var(--foreground-alt);
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer-contact-info {
+  text-align: center;
+  max-width: 300px;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social-icons a {
+  color: var(--foreground-alt)
+}
+
+/* Add the updated CSS for the menu here */
+@media screen and (max-width: 768px) {
+  /* Show the menu on small screens */
+  .navbar-links {
+    display: none;
   }
-}
-
-@media (min-width: 1024px) {
-  body {
+  .navbar-menu {
     display: flex;
-    place-items: center;
+    gap: 20px;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .content-padding {
+    height: 55px; /* Adjust this to match the navbar's height */
+  }  
+
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Add the updated CSS for the side menu here */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Initially off-screen from the right */
+    width: 250px;
+    height: 100%;
+    background-color: var(--background-alt);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .side-menu.open {
+    right: 0; /* Move in when open */
+  }
+
+  .side-menu-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 70px; /* Adjust this value to match the navbar's height */
+  }
+
+  .side-menu-button {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--primary);;
+    color: var(--foreground-alt);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .side-menu-button:hover {
+    background-color: var(--primary-hover-button);
+    color:var(--foreground);
+    text-decoration: none;
   }
 }

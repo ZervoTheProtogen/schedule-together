@@ -1,3 +1,7 @@
+body {
+  color:#fff;
+}
+
 .app-container {
   min-height: 350px;
 }

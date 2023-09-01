@@ -17,6 +17,10 @@ async function onSubmit(values) {
 </script>
 
 <template>
+    <div style="text-align: center;">
+        <a class="title">ScheduleTogether</a>
+    </div>
+    <div class="content-spacer-smaller"></div>
     <div class="card m-3">
         <h4 class="card-header">Login</h4>
         <div class="card-body">
