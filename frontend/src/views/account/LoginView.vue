@@ -17,32 +17,35 @@ async function onSubmit(values) {
 </script>
 
 <template>
+    <div class="content-spacer-smaller"></div>
     <div style="text-align: center;">
         <a class="title">ScheduleTogether</a>
     </div>
-    <div class="content-spacer-smaller"></div>
-    <div class="card m-3">
-        <h4 class="card-header">Login</h4>
-        <div class="card-body">
-            <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
-                <div class="form-group">
-                    <label>Username</label>
-                    <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
-                    <div class="invalid-feedback">{{ errors.username }}</div>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
-                    <div class="invalid-feedback">{{ errors.password }}</div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" :disabled="isSubmitting">
-                        <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-                        Login
-                    </button>
-                    <router-link to="register" class="btn btn-link">Register</router-link>
-                </div>
-            </Form>
+    <div class="content-spacer-normal"></div>
+    <div class="card-container">
+        <div class="card">
+            <h4 class="card-header">Login</h4>
+            <div>
+                <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
+                        <div class="invalid-feedback">{{ errors.username }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
+                        <div class="invalid-feedback">{{ errors.password }}</div>
+                    </div>
+                    <div class="form-group">
+                        <button class="form-button" :disabled="isSubmitting">
+                            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                            Login
+                        </button>
+                        <router-link to="register" class="form-button-link">Register</router-link>
+                    </div>
+                </Form>
+            </div>
         </div>
     </div>
 </template>

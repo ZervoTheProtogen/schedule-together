@@ -18,3 +18,13 @@ if (authStore.user) {
         </div>
     </div>
 </template>
+
+<style>
+.card {
+    background-color:var(--primary);
+}
+
+.form-control {
+    background-color:var(--background);
+}
+</style>
