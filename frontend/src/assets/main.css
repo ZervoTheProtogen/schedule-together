@@ -159,9 +159,14 @@ main {
   gap: 20px;
 }
 
+/* This is needed to prevent nav from being consumed by the void, it wasn't needed before. Why? */
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
 .navbar a {
   color: var(--foreground-alt);
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 10px;
   font-size:15px;
   text-decoration: none;
@@ -171,6 +176,7 @@ main {
 .navbar a:hover {
   color: var(--foreground-alt);
   background-color: var(--primary-hover-button);
+  cursor: grab; 
 }
 
 .content {

@@ -5,12 +5,12 @@ import { Alert } from '@/components';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const authStore = useAuthStore();
 
-library.add(faBars, faArrowRight, faFacebook, faInstagram, faYoutube);
+library.add(faBars, faArrowRight, faGithub, faInstagram, faYoutube);
 </script>
 
 <template>
@@ -51,7 +51,7 @@ library.add(faBars, faArrowRight, faFacebook, faInstagram, faYoutube);
           <p>Copyright 2023 Zervo Network</p>
         </div>  
         <div class="footer-social-icons">
-          <a href="https://www.facebook.com/"><font-awesome-icon :icon="faFacebook" size="2xl" /></a>
+          <a href="https://github.com/ZervoTheProtogen/schedule-togheter"><font-awesome-icon :icon="faGithub" size="2xl" /></a>
           <a href="https://www.instagram.com/"><font-awesome-icon :icon="faInstagram" size="2xl" /></a>
           <a href="https://www.youtube.com"><font-awesome-icon :icon="faYoutube" size="2xl" /></a>
         </div>
