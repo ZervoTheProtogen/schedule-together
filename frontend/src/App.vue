@@ -4,13 +4,13 @@ import { useAuthStore } from '@/stores';
 import { Alert } from '@/components';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faArrowRight, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const authStore = useAuthStore();
 
-library.add(faBars, faArrowRight, faGithub, faInstagram, faYoutube);
+library.add(faBars, faArrowRight, faCircleUser, faGithub, faInstagram, faYoutube);
 </script>
 
 <template>
@@ -34,20 +34,20 @@ library.add(faBars, faArrowRight, faGithub, faInstagram, faYoutube);
       <div class="side-menu-content">
         <RouterLink class="side-menu-button" to="/" @click="closeMenu">Home</RouterLink>
         <RouterLink class="side-menu-button" to="/users" @click="closeMenu">Users</RouterLink>
-        <button class="side-menu-button" @click="authStore.logout()">Logout</button>
+        <button class="side-menu-button negative" @click="authStore.logout()">Logout</button>
       </div>
     </div>
-    <Alert />
     <div class="content">
       <div class="content-padding"></div>
       <RouterView></RouterView>
+      <Alert />
     </div>
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-logo">ScheduleTogether</div>
         <div class="footer-contact-info">
           <p>Email: contact@zervo.org</p>
-          <p>Copyright 2023 Zervo Network</p>
+          <p>Copyright © 2023 Zervo Network</p>
         </div>  
         <div class="footer-social-icons">
           <a href="https://github.com/ZervoTheProtogen/schedule-together"><font-awesome-icon :icon="faGithub" size="2xl" /></a>

@@ -7,6 +7,8 @@ import { storeToRefs } from 'pinia';
 import { useUsersStore, useAlertStore } from '@/stores';
 import { router } from '@/router';
 
+import { Spinner } from '@/components';
+
 const usersStore = useUsersStore();
 const alertStore = useAlertStore();
 const route = useRoute();
@@ -32,7 +34,7 @@ const schema = Yup.object().shape({
         .transform(x => x === '' ? undefined : x)
         // password optional in edit mode
         .concat(user ? null : Yup.string().required('Password is required'))
-        .min(6, 'Password must be at least 6 characters')
+        .min(8, 'Password must be at least 8 characters')
 });
 
 async function onSubmit(values) {
@@ -54,53 +56,51 @@ async function onSubmit(values) {
 </script>
 
 <template>
-    <h1>{{title}}</h1>
+    <h1 style="text-align: center;">{{title}}</h1>
     <template v-if="!(user?.loading || user?.error)">
-        <Form @submit="onSubmit" :validation-schema="schema" :initial-values="user" v-slot="{ errors, isSubmitting }">
-            <div class="form-row">
-                <div class="form-group col">
-                    <label>First Name</label>
-                    <Field name="firstName" type="text" class="form-control" :class="{ 'is-invalid': errors.firstName }" />
-                    <div class="invalid-feedback">{{ errors.firstName }}</div>
-                </div>
-                <div class="form-group col">
-                    <label>Last Name</label>
-                    <Field name="lastName" type="text" class="form-control" :class="{ 'is-invalid': errors.lastName }" />
-                    <div class="invalid-feedback">{{ errors.lastName }}</div>
-                </div>
+        <div class="card-container">
+            <div class="card">
+                <Form @submit="onSubmit" :validation-schema="schema" :initial-values="user" v-slot="{ errors, isSubmitting }">
+                    <div class="card-form-group">
+                        <label class="card-form-label">First Name</label>
+                        <Field name="firstName" type="text" class="card-form-control" :class="{ 'is-invalid': errors.firstName }" />
+                        <div class="invalid-feedback">{{ errors.firstName }}</div>
+                    </div>
+                    <div class="card-form-group">
+                        <label class="card-form-label">Last Name</label>
+                        <Field name="lastName" type="text" class="card-form-control" :class="{ 'is-invalid': errors.lastName }" />
+                        <div class="invalid-feedback">{{ errors.lastName }}</div>
+                    </div>
+                    <div class="card-form-group">
+                        <label class="card-form-label">Username</label>
+                        <Field name="username" type="text" class="card-form-control" :class="{ 'is-invalid': errors.username }" />
+                        <div class="invalid-feedback">{{ errors.username }}</div>
+                    </div>
+                    <div class="card-form-group">
+                        <label class="card-form-label">Password</label>
+                        <Field name="password" type="password" class="card-form-control" :class="{ 'is-invalid': errors.password }" />
+                        <div class="invalid-feedback">{{ errors.password }}</div>
+                        <label><em v-if="user">(Leave blank to keep the same password)</em></label>
+                    </div>
+                    <div class="card-form-group center">
+                        <button class="card-form-button" :disabled="isSubmitting">
+                            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                            Save
+                        </button>
+                        <button class="card-form-button negative" style="margin-left:20px;">Cancel</button>
+                    </div>
+                </Form>
             </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <label>Username</label>
-                    <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
-                    <div class="invalid-feedback">{{ errors.username }}</div>
-                </div>
-                <div class="form-group col">
-                    <label>
-                        Password
-                        <em v-if="user">(Leave blank to keep the same password)</em>
-                    </label>
-                    <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
-                    <div class="invalid-feedback">{{ errors.password }}</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" :disabled="isSubmitting">
-                    <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-                    Save
-                </button>
-                <router-link to="/users" class="btn btn-link">Cancel</router-link>
-            </div>
-        </Form>
+        </div>
     </template>
     <template v-if="user?.loading">
-        <div class="text-center m-5">
-            <span class="spinner-border spinner-border-lg align-center"></span>
+        <div>
+            <Spinner />
         </div>
     </template>
     <template v-if="user?.error">
-        <div class="text-center m-5">
-            <div class="text-danger">Error loading user: {{user.error}}</div>
+        <div class="text-center">
+            <div class="text-negative">Error loading user: {{user.error}}</div>
         </div>
     </template>
 </template>

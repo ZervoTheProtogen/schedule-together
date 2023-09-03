@@ -37,7 +37,7 @@ async function onSubmit(values) {
                         <Field name="password" type="password" class="card-form-control" :class="{ 'field-is-invalid': errors.password }" />
                         <div class="invalid-feedback">{{ errors.password }}</div>
                     </div>
-                    <div class="card-form-group">
+                    <div class="card-form-group center">
                         <button class="card-form-button" :disabled="isSubmitting">
                             <Spinner v-show="isSubmitting" class="spinner-center" />
                             Login

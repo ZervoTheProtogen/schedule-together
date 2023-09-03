@@ -7,11 +7,28 @@
   --primary-button: #0059ff;
   --primary-hover-button: #0077ff;
   --primary-border: #686868;
-  --field: #1d1d1d;
+  --field: #252525;
+  --negative: #ff0000;
+  --negative-hover: #ff4b4b;
+  --positive: #06c000;
+  --positive-hover: #079e02;
   --foreground: #ffffff;
   --foreground-alt: #ffffff;
   --background: #3f3f3f;
   --background-alt: #292929;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 body {
@@ -25,6 +42,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 main {
@@ -53,13 +71,22 @@ a:visited {
   padding:10px 20px;
   border:1px solid var(--primary-border);
   border-radius:15px;
-  width:fit-content;
-  min-width:0;
+  min-width: 800px;
+  /*box-shadow: 5px 5px 10px #0000005b;*/
 }
 
 .card-header {
   font-size: 28px;
   text-align: center;
+}
+
+.card-form-row {
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-wrap:wrap;
+  flex-wrap:wrap;
+  margin-right:-5px;
+  margin-left:-5px;
 }
 
 .card-form-group {
@@ -71,32 +98,42 @@ a:visited {
   flex-flow: row wrap;
   -ms-flex-align: center;
   align-items: center;
+  margin-top: 10px;
   margin-bottom: 0;
 }
 
-.card-form-group .center {
+.card-form-group.center {
   justify-content: center;
 }
 
 .card-form-label {
   font-size:17px;
-  margin:5px;
-  margin-top:15px;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  border:1px solid var(--primary-border);
+  border-radius: 5px;
+  padding: 0 3px;
+  background-color: var(--background);
+  width: fit-content;
 }
 
 /* Fix bug of small card normal and extended width on error pls */
 .card-form-control {
   display:block;
   width:100%;
-  height:30px;
-  padding:.375rem .75rem;font-size:1rem;
+  height:40px;
+  padding:.375rem .75rem;
+  font-size:1rem;
   font-weight:400;
   line-height:1.5;
   color: var(--foreground);
   background-color: var(--field);
   background-clip:padding-box;
   border:1px solid var(--primary-border);
-  border-radius:.25rem;
+  border-radius: 5px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.4);
   transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 
@@ -110,9 +147,16 @@ a:visited {
   font-size: 15px;
   color: var(--foreground);
 }
-
 .card-form-button:hover {
   background-color: var(--primary-hover-button);
+  cursor: pointer;
+}
+
+.card-form-button.negative {
+  background-color: var(--negative);
+}
+.card-form-button.negative:hover {
+  background-color: var(--negative-hover);
 }
 
 .card-form-button-link {
@@ -127,25 +171,99 @@ a:visited {
   color:var(--primary-hover-button);
 }
 
+.card-table {
+  overflow:scroll;
+}
+
+.card-table-body {
+  border:1px solid var(--primary-border);
+}
+
+.card-table-row {
+  background-color: var(--background);
+}
+
+.card-list-button {
+  background-color: var(--primary-button);
+  border: none;
+  margin-top: 5px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 15px;
+  color: var(--foreground);
+}
+.card-list-button:hover {
+  background-color: var(--primary-hover-button);
+}
+
+.card-list-button.negative {
+  background-color: var(--negative);
+}
+.card-list-button.negative:hover {
+  background-color: var(--negative-hover);
+}
+
+.text-negative {
+  color: var(--negative);
+}
+
 .field-is-invalid {
-  border-color:red;
+  border-color: var(--negative);
 }
 
 .invalid-feedback {
-  color: red;
+  color: var(--negative);
+}
+
+.alert-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  background-color: var(--primary-button);
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 20px;
+  width: fit-content;
+}
+.alert.alert-danger {
+  background-color: var(--negative);
+}
+.alert.alert-success {
+  background-color: var(--positive);
+}
+
+.alert-button {
+  background-color: var(--foreground);
+  color: var(--background-alt);
+  text-decoration: none;
+  border: none;
+  padding: 2px;
+  margin: 4px;
+}
+.alert-button:hover {
+  background-color: var(--foreground-alt);
 }
 
 .title {
-  color: var(--foreground-alt);
+  color: var(--foreground);
   font-size: 45px;
   font-weight: bold;
   text-shadow: 2px 2px 4px #000000;
   text-align: center;
 }
 
+.test-center {
+  text-align: center;
+}
+
 .navbar {
   background-color: var(--primary);
-  color: var(--foreground-alt);
+  color: var(--foreground);
   position: fixed;
   top: 0;
   left: 0;
@@ -193,7 +311,7 @@ a:visited {
 .navbar a:hover {
   color: var(--foreground-alt);
   background-color: var(--primary-hover-button);
-  cursor: grab; 
+  cursor: pointer; 
 }
 
 .content {
@@ -322,7 +440,7 @@ a:visited {
     display: block;
     padding: 10px 20px;
     background-color: var(--primary);;
-    color: var(--foreground-alt);
+    color: var(--foreground);
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -332,10 +450,26 @@ a:visited {
     text-align: center;
     transition: 0.3s;
   }
+
+  .side-menu-button:link {
+    color: var(--foreground);
+  }
+
+  .side-menu-button:visited {
+    color: var(--foreground);
+  }
   
   .side-menu-button:hover {
     background-color: var(--primary-hover-button);
     color:var(--foreground);
     text-decoration: none;
+  }
+
+  .side-menu-button.negative:hover {
+    background-color: red;
+  }
+
+  .card {
+    min-width:fit-content;
   }
 }
