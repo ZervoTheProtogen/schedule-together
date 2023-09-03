@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useUsersStore } from '@/stores';
 import { router } from '@/router';
 
-import { Spinner } from '@/components';
+import { Spinner, Search } from '@/components';
 
 const usersStore = useUsersStore();
 const { users } = storeToRefs(usersStore);
@@ -16,7 +16,12 @@ usersStore.getAll();
     <h1 style="text-align: center;">Users</h1>
     <div class="card-container">
         <div class="card">
-            <button class="card-form-button" @click="router.push('/users/add')">Add User</button>
+            <div>
+                <div class="card-form-row compact">
+                    <button class="card-form-button" @click="router.push('/users/add')">Add User</button>
+                    <Search />
+                </div>
+            </div>
             <table class="card-table">
                 <thead>
                     <tr>

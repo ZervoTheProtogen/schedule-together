@@ -29,6 +29,8 @@ const schema = Yup.object().shape({
         .required('Last Name is required'),
     username: Yup.string()
         .required('Username is required'),
+    email: Yup.string()
+        .required('Email is required'),
     password: Yup.string()
         .transform(x => x === '' ? undefined : x)
         // password optional in edit mode
@@ -60,6 +62,11 @@ async function onSubmit(values) {
         <div class="card-container">
             <div class="card">
                 <Form @submit="onSubmit" :validation-schema="schema" :initial-values="user" v-slot="{ errors, isSubmitting }">
+                    <div class="card-form-group">
+                        <label class="card-form-label">Email</label>
+                        <Field name="email" type="text" class="card-form-control" :class="{ 'is-invalid': errors.email }" />
+                        <div class="invalid-feedback">{{ errors.email }}</div>
+                    </div>
                     <div class="card-form-group">
                         <label class="card-form-label">First Name</label>
                         <Field name="firstName" type="text" class="card-form-control" :class="{ 'is-invalid': errors.firstName }" />

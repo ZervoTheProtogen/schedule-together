@@ -1,5 +1,6 @@
 @import './base.css';
 @import './spinner.css';
+@import './search.css';
 
 :root {
   --primary: #2c2c2c;
@@ -81,12 +82,19 @@ a:visited {
 }
 
 .card-form-row {
-  display:-ms-flexbox;
-  display:flex;
-  -ms-flex-wrap:wrap;
-  flex-wrap:wrap;
-  margin-right:-5px;
-  margin-left:-5px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.card-form-row.compact {
+  flex-direction: row;
+  gap:20px;
+  width:50%;
+  margin:0 auto;
 }
 
 .card-form-group {
@@ -471,5 +479,9 @@ a:visited {
 
   .card {
     min-width:fit-content;
+  }
+
+  .card-form-row.compact {
+    flex-direction: column;
   }
 }
