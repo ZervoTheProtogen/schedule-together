@@ -3,6 +3,8 @@ import { storeToRefs } from 'pinia';
 
 import { useUsersStore } from '@/stores';
 
+import { Spinner } from '@/components';
+
 const usersStore = useUsersStore();
 const { users } = storeToRefs(usersStore);
 
@@ -30,7 +32,7 @@ usersStore.getAll();
                     <td style="white-space: nowrap">
                         <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
                         <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting">
-                            <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                            <Spinner v-if="user.isDeleting" />
                             <span v-else>Delete</span>
                         </button>
                     </td>
@@ -38,7 +40,7 @@ usersStore.getAll();
             </template>
             <tr v-if="users.loading">
                 <td colspan="4" class="text-center">
-                    <span class="spinner-border spinner-border-lg align-center"></span>
+                    <Spinner />
                 </td>
             </tr>
             <tr v-if="users.error">

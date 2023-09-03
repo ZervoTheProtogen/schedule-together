@@ -27,22 +27,22 @@ async function onSubmit(values) {
             <h4 class="card-header">Login</h4>
             <div>
                 <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
-                    <div class="form-group">
-                        <label class="form-label">Username</label>
-                        <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">Username</label>
+                        <Field name="username" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.username }" />
                         <div class="invalid-feedback">{{ errors.username }}</div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">Password</label>
+                        <Field name="password" type="password" class="card-form-control" :class="{ 'field-is-invalid': errors.password }" />
                         <div class="invalid-feedback">{{ errors.password }}</div>
                     </div>
-                    <div class="form-group">
-                        <button class="form-button" :disabled="isSubmitting">
-                            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                    <div class="card-form-group">
+                        <button class="card-form-button" :disabled="isSubmitting">
+                            <Spinner v-show="isSubmitting" class="spinner-center" />
                             Login
                         </button>
-                        <router-link to="register" class="form-button-link">Register</router-link>
+                        <router-link to="register" class="card-form-button-link">Register</router-link>
                     </div>
                 </Form>
             </div>

@@ -2,6 +2,8 @@
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 
+import { Spinner } from '@/components';
+
 import { useUsersStore, useAlertStore } from '@/stores';
 import { router } from '@/router';
 
@@ -41,32 +43,34 @@ async function onSubmit(values) {
             <h4 class="card-header">Register</h4>
             <div class="card-body">
                 <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
-                    <div class="form-group">
-                        <label class="form-label">First Name</label>
-                        <Field name="firstName" type="text" class="form-control" :class="{ 'is-invalid': errors.firstName }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">First Name</label>
+                        <Field name="firstName" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.firstName }" />
                         <div class="invalid-feedback">{{ errors.firstName }}</div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Last Name</label>
-                        <Field name="lastName" type="text" class="form-control" :class="{ 'is-invalid': errors.lastName }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">Last Name</label>
+                        <Field name="lastName" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.lastName }" />
                         <div class="invalid-feedback">{{ errors.lastName }}</div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Username</label>
-                        <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">Username</label>
+                        <Field name="username" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.username }" />
                         <div class="invalid-feedback">{{ errors.username }}</div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
+                    <div class="card-form-group">
+                        <label class="card-form-label">Password</label>
+                        <Field name="password" type="password" class="card-form-control" :class="{ 'field-is-invalid': errors.password }" />
                         <div class="invalid-feedback">{{ errors.password }}</div>
                     </div>
-                    <div class="form-group">
-                        <button class="form-button" :disabled="isSubmitting">
-                            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                    <div class="card-form-group">
+                        <button class="card-form-button" :disabled="isSubmitting">
                             Register
                         </button>
-                        <router-link to="login" class="form-button-link">Cancel</router-link>
+                        <router-link to="login" class="card-form-button-link">Cancel</router-link>
+                    </div>
+                    <div class="card-form-group center">
+                        <Spinner v-show="isSubmitting" class="spinner-center" />
                     </div>
                 </Form>
             </div>

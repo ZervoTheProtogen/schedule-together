@@ -1,4 +1,5 @@
 @import './base.css';
+@import './spinner.css';
 
 :root {
   --primary: #2c2c2c;
@@ -6,6 +7,7 @@
   --primary-button: #0059ff;
   --primary-hover-button: #0077ff;
   --primary-border: #686868;
+  --field: #1d1d1d;
   --foreground: #ffffff;
   --foreground-alt: #ffffff;
   --background: #3f3f3f;
@@ -30,6 +32,17 @@ main {
   text-align: center;
 }
 
+a:link {
+  color: var(--primary-button);
+}
+a:visited {
+  color: var(--primary-hover-button)
+}
+
+.page-container {
+  text-align: center;
+}
+
 .card-container {
   display: flex;
   justify-content: center;
@@ -49,7 +62,7 @@ main {
   text-align: center;
 }
 
-.form-group {
+.card-form-group {
   display: -ms-flexbox;
   display: flex;
   -ms-flex: 0 0 auto;
@@ -61,14 +74,18 @@ main {
   margin-bottom: 0;
 }
 
-.form-label {
+.card-form-group .center {
+  justify-content: center;
+}
+
+.card-form-label {
   font-size:17px;
   margin:5px;
   margin-top:15px;
 }
 
 /* Fix bug of small card normal and extended width on error pls */
-.form-control {
+.card-form-control {
   display:block;
   width:100%;
   height:30px;
@@ -76,14 +93,14 @@ main {
   font-weight:400;
   line-height:1.5;
   color: var(--foreground);
-  background-color:var(--background-alt);
+  background-color: var(--field);
   background-clip:padding-box;
   border:1px solid var(--primary-border);
   border-radius:.25rem;
   transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 
-.form-button {
+.card-form-button {
   background-color: var(--primary-button);
   border: none;
   margin-top: 20px;
@@ -94,11 +111,11 @@ main {
   color: var(--foreground);
 }
 
-.form-button:hover {
+.card-form-button:hover {
   background-color: var(--primary-hover-button);
 }
 
-.form-button-link {
+.card-form-button-link {
   border: none;
   margin: 20px;
   color:var(--primary-button);
@@ -106,11 +123,11 @@ main {
   text-decoration: none;
 }
 
-.form-button-link:hover {
+.card-form-button-link:hover {
   color:var(--primary-hover-button);
 }
 
-.is-invalid {
+.field-is-invalid {
   border-color:red;
 }
 
