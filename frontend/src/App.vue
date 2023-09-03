@@ -47,7 +47,6 @@ library.add(faBars, faArrowRight, faGithub, faInstagram, faYoutube);
         <div class="footer-logo">ScheduleTogether</div>
         <div class="footer-contact-info">
           <p>Email: contact@zervo.org</p>
-          <p>Phone: (123) 456-7890</p>
           <p>Copyright 2023 Zervo Network</p>
         </div>  
         <div class="footer-social-icons">
