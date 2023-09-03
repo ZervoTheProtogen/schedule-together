@@ -67,7 +67,7 @@ main {
   margin-top:15px;
 }
 
-/* Fix bug of small card normal and extended width on error*/
+/* Fix bug of small card normal and extended width on error pls */
 .form-control {
   display:block;
   width:100%;
@@ -146,7 +146,7 @@ main {
 }
 
 .navbar-menu {
-  display: none; /* Hide on normal screens */
+  display: none;
 }
 
 .menu-icon {
@@ -170,7 +170,7 @@ main {
   padding: 5px 10px;
   font-size:15px;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
 .navbar a:hover {
@@ -186,12 +186,12 @@ main {
 }
 
 .content-wrapper {
-  position: relative; /* Set the position to something other than static */
-  z-index: 1; /* Ensure the content is stacked above the background */
+  position: relative;
+  z-index: 1;
 }
 
 .content-padding {
-  height: 34px; /* Adjust this to match the navbar's height */
+  height: 34px;
 }
 
 .content-spacer-smaller {
@@ -253,12 +253,15 @@ main {
 }
 
 .footer-social-icons a {
-  color: var(--foreground-alt)
+  color: var(--foreground);
+  transition: 200ms;
 }
 
-/* Add the updated CSS for the menu here */
+.footer-social-icons a:hover {
+  color: var(--primary-hover-button);
+}
+
 @media screen and (max-width: 768px) {
-  /* Show the menu on small screens */
   .navbar-links {
     display: none;
   }
@@ -268,7 +271,7 @@ main {
   }
 
   .content-padding {
-    height: 55px; /* Adjust this to match the navbar's height */
+    height: 55px;
   }  
 
   .footer-content {
@@ -276,11 +279,10 @@ main {
     gap: 10px;
   }
   
-  /* Add the updated CSS for the side menu here */
   .side-menu {
     position: fixed;
     top: 0;
-    right: -250px; /* Initially off-screen from the right */
+    right: -250px;
     width: 250px;
     height: 100%;
     background-color: var(--background-alt);
@@ -289,14 +291,14 @@ main {
   }
 
   .side-menu.open {
-    right: 0; /* Move in when open */
+    right: 0;
   }
 
   .side-menu-content {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    padding-top: 70px; /* Adjust this value to match the navbar's height */
+    padding-top: 70px;
   }
 
   .side-menu-button {
@@ -305,12 +307,13 @@ main {
     background-color: var(--primary);;
     color: var(--foreground-alt);
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     text-decoration: none;
     font-size: 17px;
     cursor: pointer;
     margin-bottom: 10px;
     text-align: center;
+    transition: 0.3s;
   }
   
   .side-menu-button:hover {

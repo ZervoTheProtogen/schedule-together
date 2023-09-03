@@ -50,7 +50,7 @@ library.add(faBars, faArrowRight, faGithub, faInstagram, faYoutube);
           <p>Copyright 2023 Zervo Network</p>
         </div>  
         <div class="footer-social-icons">
-          <a href="https://github.com/ZervoTheProtogen/schedule-togheter"><font-awesome-icon :icon="faGithub" size="2xl" /></a>
+          <a href="https://github.com/ZervoTheProtogen/schedule-together"><font-awesome-icon :icon="faGithub" size="2xl" /></a>
           <a href="https://www.instagram.com/"><font-awesome-icon :icon="faInstagram" size="2xl" /></a>
           <a href="https://www.youtube.com"><font-awesome-icon :icon="faYoutube" size="2xl" /></a>
         </div>
