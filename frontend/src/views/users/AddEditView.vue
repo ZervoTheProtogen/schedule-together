@@ -17,7 +17,6 @@ const id = route.params.id;
 let title = 'Add User';
 let user = null;
 if (id) {
-    // edit mode
     title = 'Edit User';
     ({ user } = storeToRefs(usersStore));
     usersStore.getById(id);
@@ -87,7 +86,7 @@ async function onSubmit(values) {
                             <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
                             Save
                         </button>
-                        <button class="card-form-button negative" style="margin-left:20px;">Cancel</button>
+                        <button class="card-form-button negative" style="margin-left:20px;" @click="router.push('/users')">Cancel</button>
                     </div>
                 </Form>
             </div>
