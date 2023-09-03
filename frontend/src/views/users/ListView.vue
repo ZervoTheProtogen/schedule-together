@@ -20,10 +20,11 @@ usersStore.getAll();
             <table class="card-table">
                 <thead>
                     <tr>
-                        <th style="width: 30%">First Name</th>
-                        <th style="width: 30%">Last Name</th>
-                        <th style="width: 30%">Username</th>
-                        <th style="width: 10%"></th>
+                        <th style="width: 22%">First Name</th>
+                        <th style="width: 22%">Last Name</th>
+                        <th style="width: 22%">Email</th>
+                        <th style="width: 22%">Username</th>
+                        <th style="width: 12%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,7 @@ usersStore.getAll();
                         <tr v-for="user in users" :key="user.id" class="card-table-row">
                             <td>{{ user.firstName }}</td>
                             <td>{{ user.lastName }}</td>
+                            <td>{{ user.email }}</td>
                             <td>{{ user.username }}</td>
                             <td style="white-space: nowrap">
                                 <button @click="router.push('/users/edit/'+user.id)" class="card-list-button">Edit</button>

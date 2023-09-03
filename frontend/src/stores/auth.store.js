@@ -6,7 +6,7 @@ import { useAlertStore } from '@/stores';
 
 // TODO: Rewrite to TypeScript
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/api/users`;
 
 export const useAuthStore = defineStore({
     id: 'auth',

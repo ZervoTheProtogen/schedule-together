@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('helpers/database');
 
+const emailEx = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
 module.exports = {
     authenticate,
     getAll,
@@ -15,6 +17,15 @@ module.exports = {
 };
 
 async function authenticate({ username, password }) {
+    // check if username is email
+    console.log(username);
+    if (emailEx.test(username)) {
+        db.con.query(`use scheduletogether`)
+        let emailQuery = await db.con.query(`SELECT username FROM Users WHERE email = '${username}'`)
+        username = emailQuery[0][0].username
+        console.log(username);
+    }
+
     const user = await db.User.scope('withHash').findOne({ where: { username } });
 
     if (!user || !(await bcrypt.compare(password, user.hash)))
@@ -34,9 +45,17 @@ async function getById(id) {
 }
 
 async function create(params) {
-    // validate
+    // validate username
     if (await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
+    }
+
+    // validate email
+    if (await db.User.findOne({ where: { email: params.email } })) {
+        throw 'Email "' + params.email + '" is already in use';
+    }
+    if (!emailEx.test(params.email)) {
+        throw 'Email "' + params.email + '" is not a valid address';
     }
 
     // hash password
@@ -51,10 +70,19 @@ async function create(params) {
 async function update(id, params) {
     const user = await getUser(id);
 
-    // validate
+    // validate username
     const usernameChanged = params.username && user.username !== params.username;
     if (usernameChanged && await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
+    }
+
+    // validate email
+    const emailChanged = params.email && user.email !== params.email;
+    if (emailChanged && await db.User.findOne({ where: { email: params.email } })) {
+        throw 'Email "' + params.email + '" is already in use';
+    }
+    if (!emailEx.test(params.email)) {
+        throw 'Email "' + params.email + '" is not a valid address';
     }
 
     // hash password if it was entered
