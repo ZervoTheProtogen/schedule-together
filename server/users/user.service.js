@@ -18,12 +18,10 @@ module.exports = {
 
 async function authenticate({ username, password }) {
     // check if username is email
-    console.log(username);
     if (emailEx.test(username)) {
-        db.con.query(`use scheduletogether`)
-        let emailQuery = await db.con.query(`SELECT username FROM Users WHERE email = '${username}'`)
-        username = emailQuery[0][0].username
-        console.log(username);
+        db.con.query(`use scheduletogether`);
+        let emailQuery = await db.con.query(`SELECT username FROM Users WHERE email = '${username}'`);
+        username = emailQuery[0][0].username;
     }
 
     const user = await db.User.scope('withHash').findOne({ where: { username } });
