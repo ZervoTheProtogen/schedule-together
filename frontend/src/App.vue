@@ -41,6 +41,7 @@ library.add(faBars, faArrowRight, faCircleUser, faGithub, faInstagram, faYoutube
       <div class="content-padding"></div>
       <RouterView></RouterView>
       <Alert />
+      <div class="content-spacer-smaller"></div>
     </div>
     <footer class="footer">
       <div class="footer-content">
