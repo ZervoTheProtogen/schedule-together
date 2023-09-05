@@ -26,7 +26,7 @@ library.add(faBars, faArrowRight, faCircleUser, faGithub, faInstagram, faYoutube
       </div>
       <div class="navbar-links">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/users">Users</RouterLink>
+        <RouterLink to="/admin/dashboard">Admin</RouterLink>
         <a @click="authStore.logout()">Logout</a>
       </div>
     </nav>

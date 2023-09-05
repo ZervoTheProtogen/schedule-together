@@ -20,10 +20,11 @@ async function authenticate({ username, password }) {
     // check if username is email
     if (emailEx.test(username)) {
         db.con.query(`use scheduletogether`);
-        let emailQuery = await db.con.query(`SELECT username FROM Users WHERE email = '${username}'`);
-        username = emailQuery[0][0].username;
+        let dbQuery = await db.con.query(`SELECT username FROM Users WHERE email = '${username}'`);
+        username = dbQuery[0][0].username;
     }
 
+    // compare hash at user
     const user = await db.User.scope('withHash').findOne({ where: { username } });
 
     if (!user || !(await bcrypt.compare(password, user.hash)))

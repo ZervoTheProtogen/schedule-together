@@ -10,8 +10,6 @@ const { user } = storeToRefs(authStore);
 <template>
     <div v-if="user">
         <div style="text-align: center;">
-            <h1>Welcome, {{user.firstName}}!</h1>
-            <p>You're logged in sucessfully!!</p>
             <p><router-link to="/admin/users">Manage Users</router-link></p>
         </div>
     </div>
