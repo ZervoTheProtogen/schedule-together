@@ -17,13 +17,6 @@ library.add(faBars, faArrowRight, faCircleUser, faBell, faGithub, faInstagram, f
   <div id="app">
     <nav class="navbar" v-show="authStore.user">
       <div class="navbar-logo">ScheduleTogether</div>
-      <div class="navbar-menu">
-        <font-awesome-icon
-          class="menu-icon"
-          @click="toggleMenu"
-          :icon="isMenuOpen ? faArrowRight : faBars"
-        />
-      </div>
       <div class="navbar-items">
         <div class="navbar-links">
           <RouterLink to="/">Home</RouterLink>
@@ -34,6 +27,13 @@ library.add(faBars, faArrowRight, faCircleUser, faBell, faGithub, faInstagram, f
           <a><font-awesome-icon :icon="faBell" size="xl" /></a>
           <a><font-awesome-icon :icon="faCircleUser" size="xl" /></a>
         </div>
+        <div class="navbar-menu">
+          <font-awesome-icon
+            class="menu-icon"
+            @click="toggleMenu"
+            :icon="isMenuOpen ? faArrowRight : faBars"
+          />
+      </div>
       </div>
     </nav>
     <div v-show="authStore.user" class="side-menu" :class="{ 'open': isMenuOpen }">
