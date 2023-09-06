@@ -9,9 +9,11 @@
   --primary-border: #686868;
   --field: #252525;
   --negative: #ff0000;
+  --negative-transparent: #ff000080;
   --negative-hover: #ff4b4b;
   --positive: #06c000;
   --positive-hover: #079e02;
+  --positive-transparent: #06c00080;
   --foreground: #ffffff;
   --foreground-alt: #ffffff;
   --background: #3f3f3f;
@@ -238,10 +240,12 @@ a:visited {
   width: fit-content;
 }
 .alert.alert-danger {
-  background-color: var(--negative);
+  background-color: var(--negative-transparent);
+  border: 1px solid var(--negative);
 }
 .alert.alert-success {
-  background-color: var(--positive);
+  background-color: var(--positive-transparent);
+  border: 1px solid var(--positive);
 }
 
 .alert-button {
@@ -296,9 +300,31 @@ a:visited {
   cursor: pointer;
 }
 
+.navbar-items {
+  display: flex;
+  gap: 20px;
+}
+
 .navbar-links {
   display: flex;
   gap: 20px;
+}
+
+.navbar-icons {
+  display: flex;
+  gap: 20px;
+  padding-top: 2px;
+}
+
+.navbar-icons a {
+  text-align: center;
+  transition: 0.3s;
+}
+
+.navbar-icons a:hover {
+  color: var(--primary-hover-button);
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 /* This is needed to prevent nav from being consumed by the void, it wasn't needed before. Why? */
@@ -306,8 +332,8 @@ a:visited {
   box-sizing: border-box;
 }
 
-.navbar a {
-  color: var(--foreground-alt);
+.navbar-links a {
+  color: var(--foreground);
   border-radius: 5px;
   padding: 5px 10px;
   font-size:15px;
@@ -315,8 +341,7 @@ a:visited {
   transition: 0.3s;
 }
 
-.navbar a:hover {
-  color: var(--foreground-alt);
+.navbar-links a:hover {
   background-color: var(--primary-hover-button);
   cursor: pointer; 
 }

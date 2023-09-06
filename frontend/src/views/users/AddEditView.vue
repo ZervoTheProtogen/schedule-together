@@ -48,7 +48,7 @@ async function onSubmit(values) {
             await usersStore.register(values);
             message = 'User added';
         }
-        await router.push('/users');
+        await router.push('/admin/users');
         alertStore.success(message);
     } catch (error) {
         alertStore.error(error);
@@ -90,10 +90,10 @@ async function onSubmit(values) {
                     </div>
                     <div class="card-form-group center">
                         <button class="card-form-button" :disabled="isSubmitting">
-                            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                            <Spinner v-show="isSubmitting" />
                             Save
                         </button>
-                        <button class="card-form-button negative" style="margin-left:20px;" @click="router.push('/users')">Cancel</button>
+                        <button class="card-form-button negative" style="margin-left:20px;" @click="router.push('admin/users')">Cancel</button>
                     </div>
                 </Form>
             </div>

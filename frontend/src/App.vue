@@ -4,13 +4,13 @@ import { useAuthStore } from '@/stores';
 import { Alert } from '@/components';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faArrowRight, faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faArrowRight, faCircleUser, faBell } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const authStore = useAuthStore();
 
-library.add(faBars, faArrowRight, faCircleUser, faGithub, faInstagram, faYoutube);
+library.add(faBars, faArrowRight, faCircleUser, faBell, faGithub, faInstagram, faYoutube);
 </script>
 
 <template>
@@ -24,16 +24,22 @@ library.add(faBars, faArrowRight, faCircleUser, faGithub, faInstagram, faYoutube
           :icon="isMenuOpen ? faArrowRight : faBars"
         />
       </div>
-      <div class="navbar-links">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/admin/dashboard">Admin</RouterLink>
-        <a @click="authStore.logout()">Logout</a>
+      <div class="navbar-items">
+        <div class="navbar-links">
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/admin/dashboard">Admin</RouterLink>
+          <a @click="authStore.logout()">Logout</a>          
+        </div>
+        <div class="navbar-icons">
+          <a><font-awesome-icon :icon="faBell" size="xl" /></a>
+          <a><font-awesome-icon :icon="faCircleUser" size="xl" /></a>
+        </div>
       </div>
     </nav>
     <div v-show="authStore.user" class="side-menu" :class="{ 'open': isMenuOpen }">
       <div class="side-menu-content">
         <RouterLink class="side-menu-button" to="/" @click="closeMenu">Home</RouterLink>
-        <RouterLink class="side-menu-button" to="/users" @click="closeMenu">Users</RouterLink>
+        <RouterLink class="side-menu-button" to="/admin/dashboard" @click="closeMenu">Admin</RouterLink>
         <button class="side-menu-button negative" @click="authStore.logout()">Logout</button>
       </div>
     </div>

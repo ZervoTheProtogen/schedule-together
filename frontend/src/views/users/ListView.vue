@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useUsersStore } from '@/stores';
 import { router } from '@/router';
 
-import { Spinner, Search } from '@/components';
+import { Spinner } from '@/components';
 
 const usersStore = useUsersStore();
 const { users } = storeToRefs(usersStore);
@@ -42,7 +42,7 @@ usersStore.getAll();
                             <td>{{ user.email }}</td>
                             <td>{{ user.username }}</td>
                             <td style="white-space: nowrap">
-                                <button @click="router.push('/users/edit/'+user.id)" class="card-list-button">Edit</button>
+                                <button @click="router.push('/admin/users/edit/'+user.id)" class="card-list-button">Edit</button>
                                 <button @click="usersStore.delete(user.id)" class="card-list-button negative" :disabled="user.isDeleting">
                                     <Spinner v-if="user.isDeleting" />
                                     <span v-else>Delete</span>
