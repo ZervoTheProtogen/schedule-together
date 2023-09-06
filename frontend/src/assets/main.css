@@ -432,9 +432,11 @@ a:visited {
   .navbar-links {
     display: none;
   }
+
   .navbar-menu {
     display: flex;
     gap: 20px;
+    padding-top: 2px;
   }
 
   .content-padding {
