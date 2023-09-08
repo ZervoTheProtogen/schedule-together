@@ -64,27 +64,27 @@ async function onSubmit(values) {
                 <Form @submit="onSubmit" :validation-schema="schema" :initial-values="user" v-slot="{ errors, isSubmitting }">
                     <div class="card-form-group">
                         <label class="card-form-label">Email</label>
-                        <Field name="email" type="text" class="card-form-control" :class="{ 'is-invalid': errors.email }" />
+                        <Field name="email" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.email }" />
                         <div class="invalid-feedback">{{ errors.email }}</div>
                     </div>
                     <div class="card-form-group">
                         <label class="card-form-label">First Name</label>
-                        <Field name="firstName" type="text" class="card-form-control" :class="{ 'is-invalid': errors.firstName }" />
+                        <Field name="firstName" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.firstName }" />
                         <div class="invalid-feedback">{{ errors.firstName }}</div>
                     </div>
                     <div class="card-form-group">
                         <label class="card-form-label">Last Name</label>
-                        <Field name="lastName" type="text" class="card-form-control" :class="{ 'is-invalid': errors.lastName }" />
+                        <Field name="lastName" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.lastName }" />
                         <div class="invalid-feedback">{{ errors.lastName }}</div>
                     </div>
                     <div class="card-form-group">
                         <label class="card-form-label">Username</label>
-                        <Field name="username" type="text" class="card-form-control" :class="{ 'is-invalid': errors.username }" />
+                        <Field name="username" type="text" class="card-form-control" :class="{ 'field-is-invalid': errors.username }" />
                         <div class="invalid-feedback">{{ errors.username }}</div>
                     </div>
                     <div class="card-form-group">
                         <label class="card-form-label">Password</label>
-                        <Field name="password" type="password" class="card-form-control" :class="{ 'is-invalid': errors.password }" />
+                        <Field name="password" type="password" class="card-form-control" :class="{ 'field-is-invalid': errors.password }" />
                         <div class="invalid-feedback">{{ errors.password }}</div>
                         <label><em v-if="user">(Leave blank to keep the same password)</em></label>
                     </div>

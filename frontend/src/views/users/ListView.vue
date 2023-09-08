@@ -18,7 +18,7 @@ usersStore.getAll();
         <div class="card">
             <div>
                 <div class="card-form-row compact">
-                    <button class="card-form-button" @click="router.push('/users/add')">Add User</button>
+                    <button class="card-form-button" @click="router.push('/admin/users/add')">Add User</button>
                     <div class="card-form-group" style="margin-bottom:10px;">
                         <input name="searchbox" type="text" placeholder="search" class="card-form-control" style="height:35px;"/>
                     </div>
