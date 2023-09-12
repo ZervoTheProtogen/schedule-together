@@ -8,6 +8,8 @@ import { useUsersStore, useAlertStore } from '@/stores';
 import { router } from '@/router';
 
 const schema = Yup.object().shape({
+    email: Yup.string()
+        .required('Email is required'),
     firstName: Yup.string()
         .required('First Name is required'),
     lastName: Yup.string()
