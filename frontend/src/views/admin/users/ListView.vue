@@ -27,11 +27,12 @@ usersStore.getAll();
             <table class="card-table">
                 <thead>
                     <tr>
-                        <th style="width: 22%">First Name</th>
-                        <th style="width: 22%">Last Name</th>
-                        <th style="width: 22%">Email</th>
-                        <th style="width: 22%">Username</th>
-                        <th style="width: 12%"></th>
+                        <th style="width: 16%">First Name</th>
+                        <th style="width: 16%">Last Name</th>
+                        <th style="width: 16%">Email</th>
+                        <th style="width: 16%">Username</th>
+                        <th style="width: 16%">Role</th>
+                        <th style="width: 4%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,7 @@ usersStore.getAll();
                             <td>{{ user.lastName }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.username }}</td>
+                            <td>{{ user.role }}</td>
                             <td style="white-space: nowrap">
                                 <button @click="router.push('/admin/users/edit/'+user.id)" class="card-list-button">Edit</button>
                                 <button @click="usersStore.delete(user.id)" class="card-list-button negative" :disabled="user.isDeleting">
