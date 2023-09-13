@@ -31,6 +31,8 @@ const schema = Yup.object().shape({
         .required('Username is required'),
     email: Yup.string()
         .required('Email is required'),
+    role: Yup.string()
+        .required('Role is required'),
     password: Yup.string()
         .transform(x => x === '' ? undefined : x)
         // password optional in edit mode
@@ -83,6 +85,15 @@ async function onSubmit(values) {
                         <div class="invalid-feedback">{{ errors.username }}</div>
                     </div>
                     <div class="card-form-group">
+                        <label class="card-form-label">Role</label>
+                        <Field name="role" as="select" class="card-form-control" :class="{ 'field-is-invalid': errors.role }">
+                            <option value="">Select option..</option>
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </Field>
+                        <div class="invalid-feedback">{{ errors.role }}</div>
+                    </div>
+                    <div class="card-form-group">
                         <label class="card-form-label">Password</label>
                         <Field name="password" type="password" class="card-form-control" :class="{ 'field-is-invalid': errors.password }" />
                         <div class="invalid-feedback">{{ errors.password }}</div>
@@ -93,7 +104,7 @@ async function onSubmit(values) {
                             <Spinner v-show="isSubmitting" />
                             Save
                         </button>
-                        <button class="card-form-button negative" style="margin-left:20px;" @click="router.push('admin/users')">Cancel</button>
+                        <button class="card-form-button negative" style="margin-left:20px;" @click="router.push('/admin/users')">Cancel</button>
                     </div>
                 </Form>
             </div>
