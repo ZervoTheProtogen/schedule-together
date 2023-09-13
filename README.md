@@ -48,3 +48,12 @@ npm run dev
 8. Test it in your browser
 
 Go to [http://localhost:5173](http://localhost:5173/)
+
+## TODO
+
+- [ ] Add functionality to userlist searchbar
+- [ ] Restrict access to admin pages
+- [ ] Restrict access to API admin actions
+- [ ] Add account and notifications menu
+- [x] Add basic frontend roles
+- [x] Add basic backend roles
