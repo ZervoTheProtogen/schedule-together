@@ -53,9 +53,6 @@ async function create(params) {
     if (await db.User.findOne({ where: { email: params.email } })) {
         throw 'Email "' + params.email + '" is already in use';
     }
-    if (!emailEx.test(params.email)) {
-        throw 'Email "' + params.email + '" is not a valid address';
-    }
 
     // hash password
     if (params.password) {
@@ -80,10 +77,7 @@ async function update(id, params) {
     if (emailChanged && await db.User.findOne({ where: { email: params.email } })) {
         throw 'Email "' + params.email + '" is already in use';
     }
-    if (!emailEx.test(params.email)) {
-        throw 'Email "' + params.email + '" is not a valid address';
-    }
-
+    
     // hash password if it was entered
     if (params.password) {
         params.hash = await bcrypt.hash(params.password, 10);

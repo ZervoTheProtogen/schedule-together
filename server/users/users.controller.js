@@ -35,8 +35,8 @@ function registerSchema(req, res, next) {
     const schema = Joi.object({
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
-        username: Joi.string().required(),
-        email: Joi.string().required(),
+        username: Joi.string().alphanum().min(5).max(12).required(),
+        email: Joi.string().email({ minDomainSegments: 2 }).empty('').required(),
         role: Joi.string().default('user'),
         password: Joi.string().min(8).required()
     });
@@ -69,8 +69,8 @@ function updateSchema(req, res, next) {
     const schema = Joi.object({
         firstName: Joi.string().empty(''),
         lastName: Joi.string().empty(''),
-        username: Joi.string().empty(''),
-        email: Joi.string().empty(''),
+        username: Joi.string().alphanum().min(5).max(12).empty(''),
+        email: Joi.string().email({ minDomainSegments: 2 }).empty(''),
         role: Joi.string().empty(''),
         password: Joi.string().min(8).empty('')
     });
