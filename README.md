@@ -51,9 +51,13 @@ Go to [http://localhost:5173](http://localhost:5173/)
 
 ## TODO
 
-- [ ] Add functionality to userlist searchbar
+- [x] Add functionality to userlist searchbar
+- [ ] Hide admin option in navbar/sidebar for users
 - [ ] Restrict access to admin pages
 - [ ] Restrict access to API admin actions
 - [ ] Add account and notifications menu
+- [ ] Style the admin dashboard
+- [ ] Add confirmation dialouge for user deletion
+- [ ] Add view for the schedule
 - [x] Add basic frontend roles
 - [x] Add basic backend roles
