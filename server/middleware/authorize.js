@@ -4,9 +4,12 @@ const jwt = require('express-jwt');
 const { secret } = require('config.json');
 const db = require('helpers/database');
 
+// will replace with a better solution in the future, probably permission system
+const adminActions = ['getAllUsers','getUserById','updateUserFull','deleteUserFull']
+
 module.exports = authorize;
 
-function authorize() {
+function authorize(action = '') {
     return [
         // authenticate JWT token and attach decoded token to request as req.user
         jwt({ secret, algorithms: ['HS256'] }),
@@ -19,6 +22,12 @@ function authorize() {
             // check user still exists
             if (!user)
                 return res.status(401).json({ message: 'Unauthorized' });
+
+            // prevent non-admins from performing admin actions
+            if (user.role != 'admin' && adminActions.includes(action)) {
+                console.log("ILLEGAL");
+                return res.status(403).json({ message: 'No Permission' });
+            }
 
             // authorization successful
             req.user = user.get();

@@ -52,11 +52,10 @@ Go to [http://localhost:5173](http://localhost:5173/)
 ## TODO
 
 - Restrict access to admin pages
-- Restrict access to API admin actions
 - Add account and notifications menu
 - Style the admin dashboard
 - Add confirmation dialouge for user deletion
 - Add view for the schedule
 - Check available roles using db instead of constant
+- Add permission system for roles
 - Rewrite javascript stuff to typescript
-- Update API url in frontend env and make nec. changes

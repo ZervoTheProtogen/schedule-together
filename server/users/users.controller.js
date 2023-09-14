@@ -9,11 +9,11 @@ const userService = require('./user.service');
 
 router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/register', registerSchema, register);
-router.get('/', authorize(), getAll);
+router.get('/', authorize('getAllUsers'), getAll);
 router.get('/current', authorize(), getCurrent);
-router.get('/:id', authorize(), getById);
-router.put('/:id', authorize(), updateSchema, update);
-router.delete('/:id', authorize(), _delete);
+router.get('/:id', authorize('getUserById'), getById);
+router.put('/:id', authorize('updateUserFull'), updateSchema, update);
+router.delete('/:id', authorize('deleteUserFull'), _delete);
 
 module.exports = router;
 
