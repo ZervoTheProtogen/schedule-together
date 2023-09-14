@@ -89,6 +89,7 @@ async function onSubmit(values) {
                         <Field name="role" as="select" class="card-form-control" :class="{ 'field-is-invalid': errors.role }">
                             <option value="">Select option..</option>
                             <option value="user">user</option>
+                            <option value="member">member</option>
                             <option value="admin">admin</option>
                         </Field>
                         <div class="invalid-feedback">{{ errors.role }}</div>

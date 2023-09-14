@@ -61,3 +61,6 @@ Go to [http://localhost:5173](http://localhost:5173/)
 - [ ] Add view for the schedule
 - [x] Add basic frontend roles
 - [x] Add basic backend roles
+- [x] Add member role
+- [x] Add role validation
+- [ ] Check available roles using db instead of constant

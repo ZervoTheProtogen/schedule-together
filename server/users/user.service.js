@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const db = require('helpers/database');
 
 const emailEx = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const roles = ["user", "member", "admin"] // Will probably be moved
 
 module.exports = {
     authenticate,
@@ -54,6 +55,11 @@ async function create(params) {
         throw 'Email "' + params.email + '" is already in use';
     }
 
+    // validate role
+    if (!roles.includes(params.role)) {
+        throw 'Role "' + params.role + '" does not exist';
+    }
+
     // hash password
     if (params.password) {
         params.hash = await bcrypt.hash(params.password, 10);
@@ -76,6 +82,11 @@ async function update(id, params) {
     const emailChanged = params.email && user.email !== params.email;
     if (emailChanged && await db.User.findOne({ where: { email: params.email } })) {
         throw 'Email "' + params.email + '" is already in use';
+    }
+
+    // validate role
+    if (!roles.includes(params.role)) {
+        throw 'Role "' + params.role + '" does not exist';
     }
     
     // hash password if it was entered
