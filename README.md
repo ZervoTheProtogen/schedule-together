@@ -51,16 +51,12 @@ Go to [http://localhost:5173](http://localhost:5173/)
 
 ## TODO
 
-- [x] Add functionality to userlist searchbar
-- [ ] Hide admin option in navbar/sidebar for users
-- [ ] Restrict access to admin pages
-- [ ] Restrict access to API admin actions
-- [ ] Add account and notifications menu
-- [ ] Style the admin dashboard
-- [ ] Add confirmation dialouge for user deletion
-- [ ] Add view for the schedule
-- [x] Add basic frontend roles
-- [x] Add basic backend roles
-- [x] Add member role
-- [x] Add role validation
-- [ ] Check available roles using db instead of constant
+- Restrict access to admin pages
+- Restrict access to API admin actions
+- Add account and notifications menu
+- Style the admin dashboard
+- Add confirmation dialouge for user deletion
+- Add view for the schedule
+- Check available roles using db instead of constant
+- Rewrite javascript stuff to typescript
+- Update API url in frontend env and make nec. changes

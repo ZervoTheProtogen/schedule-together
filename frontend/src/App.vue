@@ -20,7 +20,7 @@ library.add(faBars, faArrowRight, faCircleUser, faBell, faGithub, faInstagram, f
       <div class="navbar-items">
         <div class="navbar-links">
           <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/admin/dashboard">Admin</RouterLink>
+          <RouterLink v-if="authStore.user.role == 'admin'" to="/admin/dashboard">Admin</RouterLink>
           <a @click="authStore.logout()">Logout</a>          
         </div>
         <div class="navbar-icons">
@@ -39,7 +39,7 @@ library.add(faBars, faArrowRight, faCircleUser, faBell, faGithub, faInstagram, f
     <div v-show="authStore.user" class="side-menu" :class="{ 'open': isMenuOpen }">
       <div class="side-menu-content">
         <RouterLink class="side-menu-button" to="/" @click="closeMenu">Home</RouterLink>
-        <RouterLink class="side-menu-button" to="/admin/dashboard" @click="closeMenu">Admin</RouterLink>
+        <RouterLink v-if="authStore.user.role == 'admin'" class="side-menu-button" to="/admin/dashboard" @click="closeMenu">Admin</RouterLink>
         <button class="side-menu-button negative" @click="authStore.logout()">Logout</button>
       </div>
     </div>
