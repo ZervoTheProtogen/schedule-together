@@ -51,7 +51,6 @@ Go to [http://localhost:5173](http://localhost:5173/)
 
 ## TODO
 
-- Restrict access to admin pages
 - Add account and notifications menu
 - Style the admin dashboard
 - Add confirmation dialouge for user deletion
