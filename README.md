@@ -54,7 +54,14 @@ Go to [http://localhost:5173](http://localhost:5173/)
 - Add account and notifications menu
 - Style the admin dashboard
 - Add confirmation dialouge for user deletion
-- Add view for the schedule
+- Add function to extract schedule from schedule view
+- Add db and backend for schedule
+- Add schedule rendering to frontend
+- Add UUIDs
+- Add friends view
+- Add friends entry to users db and backend
+- Add other frontend stuff for friends
+- Add ability to add friends
 - Check available roles using db instead of constant
 - Add permission system for roles
 - Rewrite javascript stuff to typescript
