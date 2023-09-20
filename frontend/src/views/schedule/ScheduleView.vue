@@ -11,6 +11,7 @@ const { user } = storeToRefs(authStore);
     <div>
         <div style="text-align: center;">
             <p>ScheduleView</p>
+            <p><router-link to="/schedule/add">Add Schedule</router-link></p>
         </div>
     </div>
 </template>
