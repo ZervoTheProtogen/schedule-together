@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-
 import { useAuthStore } from '@/stores';
+import { router } from '@/router';
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
@@ -11,12 +11,10 @@ const { user } = storeToRefs(authStore);
     <div class="content-spacer-smaller"></div>
     <h1 style="text-align: center;">Add Schedule</h1>
     <div class="content-spacer-small"></div>
-    <div style="text-align:center;">
-        <div style="text-align: center;">
-            <p>How do you want to add a schedule?</p>
+    <div class="card-container">
+        <div class="card">
+            <p>Not implemented yet.</p>
+            <button class="card-form-button negative" @click="router.push('/schedule/add')">Cancel</button>
         </div>
-        <button class="card-form-button" @click="router.push('/admin/users/add')">Extract from SchoolSoft</button>
-        <br>
-        <button class="card-form-button" @click="router.push('/admin/users/add')">Extract from Skola24</button>
     </div>
 </template>

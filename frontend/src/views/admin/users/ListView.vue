@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { useUsersStore } from '@/stores';
 import { router } from '@/router';
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue';
 
 import { Spinner } from '@/components';
 
