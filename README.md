@@ -65,3 +65,5 @@ Go to [http://localhost:5173](http://localhost:5173/)
 - Check available roles using db instead of constant
 - Add permission system for roles
 - Rewrite javascript stuff to typescript
+
+And a lot of other stuff
